@@ -1,0 +1,2 @@
+9.2该文件夹实现用yolov3实现目标识别和老摄像头
+纠正畸变代码：ROS_NAMESPACE=usb_cam rosrun image_proc image_proc

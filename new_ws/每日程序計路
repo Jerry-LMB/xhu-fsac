@@ -1,0 +1,12 @@
+8.9日晚上， 今日直線已經可以實現偏移
+在彎道時 偏移還是會出現問題，是因為那個殿進入了，沒有存進去的原因
+8.10 下午 解决直线开始只有一个点的，不能跑的问题，解决弯道给错点的问题
+
+8.17晚上，解决第一帧进来，一个点和两个点的混杂的情况。现在不管是一个点 两点都可以实现
+新的摄像头订阅的去畸变后的话题：/usb_cam/image_rect_color
+利用ros自带的包来纠正畸变：ROS_NAMESPACE=usb_cam rosrun image_proc image_proc
+将调用纠正畸变的代码的包放在launch里面：<node name="image_proc" pkg="image_proc" type="image_proc" ns="usb_cam"/>
+8.26晚上，记录
+新摄像头+yolov3实现目标检测
+能实现测距
+

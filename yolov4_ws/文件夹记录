@@ -1,0 +1,10 @@
+该文件夹已经可以运行yolo4和新摄像头
+ 就差测距算法转移
+8.24程序改 记录
+新的摄像头订阅的去畸变后的话题：/usb_cam/image_rect_color
+利用ros自带的包来纠正畸变：ROS_NAMESPACE=usb_cam rosrun image_proc image_proc
+将调用摄像头的包放在launch里面：<node name="image_proc" pkg="image_proc" type="image_proc" ns="usb_cam"/>
+已经加入测距程序
+8.25程序记录
+把测距程序已经加入，能够实现测距，
+较小的目标也能实现测量
