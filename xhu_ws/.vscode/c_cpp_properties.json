@@ -1,0 +1,21 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "",
+        "limitSymbolsToIncludedHeaders": true
+      },
+      "includePath": [
+        "/home/xhu-fsac/xhu_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/xhu-fsac/xhu_ws/src/CAN_Com/include/**",
+        "/home/xhu-fsac/xhu_ws/src/RxBouningBox/include/**",
+        "/home/xhu-fsac/xhu_ws/src/darknet_ros/darknet_ros/include/**",
+        "/home/xhu-fsac/xhu_ws/src/usb_cam/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS"
+    }
+  ],
+  "version": 4
+}
