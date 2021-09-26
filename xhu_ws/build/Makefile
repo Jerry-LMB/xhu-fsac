@@ -1316,6 +1316,19 @@ RxBouningBox_genlisp/fast:
 .PHONY : RxBouningBox_genlisp/fast
 
 #=============================================================================
+# Target rules for targets named S_node
+
+# Build rule for target.
+S_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 S_node
+.PHONY : S_node
+
+# fast build rule for target.
+S_node/fast:
+	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/S_node.dir/build.make RxBouningBox/CMakeFiles/S_node.dir/build
+.PHONY : S_node/fast
+
+#=============================================================================
 # Target rules for targets named _RxBouningBox_generate_messages_check_deps_point
 
 # Build rule for target.
@@ -1327,6 +1340,19 @@ _RxBouningBox_generate_messages_check_deps_point: cmake_check_build_system
 _RxBouningBox_generate_messages_check_deps_point/fast:
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point.dir/build.make RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point.dir/build
 .PHONY : _RxBouningBox_generate_messages_check_deps_point/fast
+
+#=============================================================================
+# Target rules for targets named _RxBouningBox_generate_messages_check_deps_point_array
+
+# Build rule for target.
+_RxBouningBox_generate_messages_check_deps_point_array: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _RxBouningBox_generate_messages_check_deps_point_array
+.PHONY : _RxBouningBox_generate_messages_check_deps_point_array
+
+# fast build rule for target.
+_RxBouningBox_generate_messages_check_deps_point_array/fast:
+	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/build.make RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/build
+.PHONY : _RxBouningBox_generate_messages_check_deps_point_array/fast
 
 #=============================================================================
 # Target rules for targets named RxBouningBox_geneus
@@ -1444,19 +1470,6 @@ RxBouningBox_generate_messages_lisp: cmake_check_build_system
 RxBouningBox_generate_messages_lisp/fast:
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/build
 .PHONY : RxBouningBox_generate_messages_lisp/fast
-
-#=============================================================================
-# Target rules for targets named _RxBouningBox_generate_messages_check_deps_point_array
-
-# Build rule for target.
-_RxBouningBox_generate_messages_check_deps_point_array: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 _RxBouningBox_generate_messages_check_deps_point_array
-.PHONY : _RxBouningBox_generate_messages_check_deps_point_array
-
-# fast build rule for target.
-_RxBouningBox_generate_messages_check_deps_point_array/fast:
-	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/build.make RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/build
-.PHONY : _RxBouningBox_generate_messages_check_deps_point_array/fast
 
 #=============================================================================
 # Target rules for targets named run_tests_darknet_ros
@@ -1794,6 +1807,7 @@ help:
 	@echo "... InerNavi"
 	@echo "... InerNavigation"
 	@echo "... RXNode"
+	@echo "... S_node"
 	@echo "... WDNode"
 	@echo "... canalystii_ros_node"
 	@echo "... controller_pp_node"

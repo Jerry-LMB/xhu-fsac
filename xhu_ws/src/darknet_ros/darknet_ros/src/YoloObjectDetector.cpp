@@ -358,7 +358,7 @@ void *YoloObjectDetector::detectInThread()
   //draw_line(display, 0, 180, 600, 181, 1, 0, 50 , 0);
   //draw_line2(display, 0, 180, 600, 181, 1, 0, 50 , 0);
   //draw_line3(display, 0, 180, 600, 181, 1, 0, 50 , 0);
-  //draw_line4(display, 0, 180, 600, 181, 1, 0, 50 , 0);
+  // draw_line4(display, 0, 180, 600, 181, 1, 0, 50 , 0);
   draw_line5(display, 0, 180, 600, 181, 2, 0, 50 , 3);
   draw_line6(display, 0, 180, 600, 181, 1, 0, 50 , 0);
   draw_line7(display, 0, 180, 600, 181, 1, 0, 50 , 0);

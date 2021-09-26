@@ -149,10 +149,12 @@ add_executable(RXNode src/RXboundingBox.cpp)
 add_executable(WDNode src/WD.cpp)
 add_executable(eightNode src/eight.cpp)
 add_executable(ENode src/pianyi.cpp)
+add_executable(S_node src/s.cpp)
 target_link_libraries(RXNode   ${catkin_LIBRARIES})
 target_link_libraries(WDNode   ${catkin_LIBRARIES})
 target_link_libraries(eightNode   ${catkin_LIBRARIES})
 target_link_libraries(ENode   ${catkin_LIBRARIES})
+target_link_libraries(S_node   ${catkin_LIBRARIES})
 #add_dependencies(RXNode ${PROJECT_NAME}_generate_messages_cpp)
 #############
 ## Install ##

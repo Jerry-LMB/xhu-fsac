@@ -186,10 +186,10 @@ public:
             c_y = Y;
           for (auto it = center.poses.begin();it!= center.poses.end();it++)
           {
-            if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 2 )
+            if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 3 )
             {
-              (*it).position.x = ((*it).position.x + c_x)/2;
-              (*it).position.y = ((*it).position.y + c_y)/2;
+              // (*it).position.x = ((*it).position.x + c_x)/2;
+              // (*it).position.y = ((*it).position.y + c_y)/2;
               cflag = 1;
               break;
             }
@@ -249,10 +249,10 @@ public:
         { 
           for (auto it = center.poses.begin();it!= center.poses.end();it++)
           {
-            if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 2 )
+            if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 3 )
             {
-              (*it).position.x = ((*it).position.x + c_x)/2;
-              (*it).position.y = ((*it).position.y + c_y)/2;
+              // (*it).position.x = ((*it).position.x + c_x)/2;
+              // (*it).position.y = ((*it).position.y + c_y)/2;
               cflag = 1;
               break;
             }
@@ -270,12 +270,7 @@ public:
   lflag = 0;
   rflag = 0;
   cflag = 0;//循环完了，之后将标志位清零
-  // for (auto it = center.poses.begin();it!= center.poses.end();it++)
-  //     {
-  //       std::cout<<center.poses.size()<<" ";
-  //       std::cout<<"center_x = "<<std::setprecision(8)<<(*it).position.x<<" ";
-  //       std::cout<<"center_y = "<<std::setprecision(9)<<(*it).position.y<<std::endl;
-  //     }
+
 for (std::vector<Position>::iterator it = right.begin();it!= right.end();it++)
       {
         std::cout<<right.size()<<" ";
@@ -287,6 +282,12 @@ for (std::vector<Position>::iterator it = right.begin();it!= right.end();it++)
         std::cout<<left.size()<<" ";
         std::cout<<"left_x = "<<std::setprecision(8)<<(*it).x<<" ";
         std::cout<<"left_y = "<<std::setprecision(9)<<(*it).y<<std::endl;
+      }
+        for (auto it = center.poses.begin();it!= center.poses.end();it++)
+      {
+        std::cout<<center.poses.size()<<" ";
+        std::cout<<"center_x = "<<std::setprecision(8)<<(*it).position.x<<" ";
+        std::cout<<"center_y = "<<std::setprecision(9)<<(*it).position.y<<std::endl;
       }
   std::cout<<"一帧结束 = "<<std::endl;
    Pub_point.publish(center);//发布规划的点的坐标

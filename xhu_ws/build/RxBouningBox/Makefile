@@ -99,6 +99,18 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 .PHONY : rebuild_cache/fast
 
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
 # Special rule for the target test
 test:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
@@ -127,18 +139,6 @@ list_install_components:
 # Special rule for the target list_install_components
 list_install_components/fast: list_install_components
 .PHONY : list_install_components/fast
-
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/cmake -P cmake_install.cmake
-.PHONY : install
-
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -256,6 +256,20 @@ RxBouningBox_genlisp/fast:
 .PHONY : RxBouningBox_genlisp/fast
 
 # Convenience name for target.
+RxBouningBox/CMakeFiles/S_node.dir/rule:
+	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RxBouningBox/CMakeFiles/S_node.dir/rule
+.PHONY : RxBouningBox/CMakeFiles/S_node.dir/rule
+
+# Convenience name for target.
+S_node: RxBouningBox/CMakeFiles/S_node.dir/rule
+.PHONY : S_node
+
+# fast build rule for target.
+S_node/fast:
+	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/S_node.dir/build.make RxBouningBox/CMakeFiles/S_node.dir/build
+.PHONY : S_node/fast
+
+# Convenience name for target.
 RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point.dir/rule:
 	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point.dir/rule
 .PHONY : RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point.dir/rule
@@ -268,6 +282,20 @@ _RxBouningBox_generate_messages_check_deps_point: RxBouningBox/CMakeFiles/_RxBou
 _RxBouningBox_generate_messages_check_deps_point/fast:
 	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point.dir/build.make RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point.dir/build
 .PHONY : _RxBouningBox_generate_messages_check_deps_point/fast
+
+# Convenience name for target.
+RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/rule:
+	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/rule
+.PHONY : RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/rule
+
+# Convenience name for target.
+_RxBouningBox_generate_messages_check_deps_point_array: RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/rule
+.PHONY : _RxBouningBox_generate_messages_check_deps_point_array
+
+# fast build rule for target.
+_RxBouningBox_generate_messages_check_deps_point_array/fast:
+	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/build.make RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/build
+.PHONY : _RxBouningBox_generate_messages_check_deps_point_array/fast
 
 # Convenience name for target.
 RxBouningBox/CMakeFiles/RxBouningBox_geneus.dir/rule:
@@ -395,20 +423,6 @@ RxBouningBox_generate_messages_lisp/fast:
 	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/build
 .PHONY : RxBouningBox_generate_messages_lisp/fast
 
-# Convenience name for target.
-RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/rule:
-	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/rule
-.PHONY : RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/rule
-
-# Convenience name for target.
-_RxBouningBox_generate_messages_check_deps_point_array: RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/rule
-.PHONY : _RxBouningBox_generate_messages_check_deps_point_array
-
-# fast build rule for target.
-_RxBouningBox_generate_messages_check_deps_point_array/fast:
-	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/build.make RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/build
-.PHONY : _RxBouningBox_generate_messages_check_deps_point_array/fast
-
 src/RXboundingBox.o: src/RXboundingBox.cpp.o
 .PHONY : src/RXboundingBox.o
 
@@ -505,6 +519,30 @@ src/pianyi.cpp.s:
 	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/ENode.dir/build.make RxBouningBox/CMakeFiles/ENode.dir/src/pianyi.cpp.s
 .PHONY : src/pianyi.cpp.s
 
+src/s.o: src/s.cpp.o
+.PHONY : src/s.o
+
+# target to build an object file
+src/s.cpp.o:
+	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/S_node.dir/build.make RxBouningBox/CMakeFiles/S_node.dir/src/s.cpp.o
+.PHONY : src/s.cpp.o
+
+src/s.i: src/s.cpp.i
+.PHONY : src/s.i
+
+# target to preprocess a source file
+src/s.cpp.i:
+	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/S_node.dir/build.make RxBouningBox/CMakeFiles/S_node.dir/src/s.cpp.i
+.PHONY : src/s.cpp.i
+
+src/s.s: src/s.cpp.s
+.PHONY : src/s.s
+
+# target to generate assembly for a file
+src/s.cpp.s:
+	cd /home/xhu-fsac/xhu_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/S_node.dir/build.make RxBouningBox/CMakeFiles/S_node.dir/src/s.cpp.s
+.PHONY : src/s.cpp.s
+
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -533,6 +571,7 @@ help:
 	@echo "... _RxBouningBox_generate_messages_check_deps_point_array"
 	@echo "... ENode"
 	@echo "... RXNode"
+	@echo "... S_node"
 	@echo "... WDNode"
 	@echo "... eightNode"
 	@echo "... src/RXboundingBox.o"
@@ -547,6 +586,9 @@ help:
 	@echo "... src/pianyi.o"
 	@echo "... src/pianyi.i"
 	@echo "... src/pianyi.s"
+	@echo "... src/s.o"
+	@echo "... src/s.i"
+	@echo "... src/s.s"
 .PHONY : help
 
 
