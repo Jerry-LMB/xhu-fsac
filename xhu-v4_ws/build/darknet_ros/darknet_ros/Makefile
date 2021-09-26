@@ -89,45 +89,6 @@ install/local/fast: preinstall/fast
 	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-.PHONY : edit_cache/fast
-
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-.PHONY : test/fast
-
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-.PHONY : rebuild_cache/fast
-
-# Special rule for the target list_install_components
-list_install_components:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
-.PHONY : list_install_components
-
-# Special rule for the target list_install_components
-list_install_components/fast: list_install_components
-.PHONY : list_install_components/fast
-
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -139,6 +100,45 @@ install/fast: preinstall/fast
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
 	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+.PHONY : list_install_components/fast
+
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/cmake --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+.PHONY : rebuild_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+.PHONY : test/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/local/cmake/cmake-3.20.0-linux-x86_64/bin/ccmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -172,214 +172,18 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
+darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/rule:
+	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/rule
+.PHONY : darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/rule
 
 # Convenience name for target.
-actionlib_generate_messages_cpp: darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/rule
-.PHONY : actionlib_generate_messages_cpp
+darknet_ros: darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/rule
+.PHONY : darknet_ros
 
 # fast build rule for target.
-actionlib_generate_messages_cpp/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/build.make darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_cpp.dir/build
-.PHONY : actionlib_generate_messages_cpp/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_py.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_py: darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : actionlib_generate_messages_py
-
-# fast build rule for target.
-actionlib_generate_messages_py/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_py.dir/build.make darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_py.dir/build
-.PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_nodejs: darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_nodejs/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build.make darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/build
-.PHONY : rosgraph_msgs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_cpp.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_cpp: darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_cpp.dir/rule
-.PHONY : roscpp_generate_messages_cpp
-
-# fast build rule for target.
-roscpp_generate_messages_cpp/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_cpp.dir/build.make darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_cpp.dir/build
-.PHONY : roscpp_generate_messages_cpp/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_eus: darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_eus.dir/rule
-.PHONY : roscpp_generate_messages_eus
-
-# fast build rule for target.
-roscpp_generate_messages_eus/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_eus.dir/build.make darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_eus.dir/build
-.PHONY : roscpp_generate_messages_eus/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_py: darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_py
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_py/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
-.PHONY : rosgraph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_lisp: darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/rule
-.PHONY : rosgraph_msgs_generate_messages_lisp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_lisp/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build.make darknet_ros/darknet_ros/CMakeFiles/rosgraph_msgs_generate_messages_lisp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_nodejs: darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
-.PHONY : roscpp_generate_messages_nodejs
-
-# fast build rule for target.
-roscpp_generate_messages_nodejs/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_nodejs.dir/build.make darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_nodejs.dir/build
-.PHONY : roscpp_generate_messages_nodejs/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_lisp.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_lisp: darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_lisp.dir/rule
-.PHONY : roscpp_generate_messages_lisp
-
-# fast build rule for target.
-roscpp_generate_messages_lisp/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_lisp.dir/build.make darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_lisp.dir/build
-.PHONY : roscpp_generate_messages_lisp/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_py.dir/build.make darknet_ros/darknet_ros/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_eus: darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-.PHONY : actionlib_generate_messages_eus
-
-# fast build rule for target.
-actionlib_generate_messages_eus/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_eus.dir/build.make darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_eus.dir/build
-.PHONY : actionlib_generate_messages_eus/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_lisp: darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : actionlib_generate_messages_lisp
-
-# fast build rule for target.
-actionlib_generate_messages_lisp/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_lisp.dir/build
-.PHONY : actionlib_generate_messages_lisp/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_nodejs: darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/rule
-.PHONY : actionlib_generate_messages_nodejs
-
-# fast build rule for target.
-actionlib_generate_messages_nodejs/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/build.make darknet_ros/darknet_ros/CMakeFiles/actionlib_generate_messages_nodejs.dir/build
-.PHONY : actionlib_generate_messages_nodejs/fast
+darknet_ros/fast:
+	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/build.make darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/build
+.PHONY : darknet_ros/fast
 
 # Convenience name for target.
 darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/rule:
@@ -394,20 +198,6 @@ darknet_ros_lib: darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/rule
 darknet_ros_lib/fast:
 	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/build.make darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/build
 .PHONY : darknet_ros_lib/fast
-
-# Convenience name for target.
-darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/rule
-.PHONY : darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/rule
-
-# Convenience name for target.
-darknet_ros: darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/rule
-.PHONY : darknet_ros
-
-# fast build rule for target.
-darknet_ros/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/build.make darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/build
-.PHONY : darknet_ros/fast
 
 __/darknet/src/activation_layer.o: __/darknet/src/activation_layer.c.o
 .PHONY : __/darknet/src/activation_layer.o
@@ -2198,21 +1988,6 @@ help:
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... test"
-	@echo "... actionlib_generate_messages_cpp"
-	@echo "... actionlib_generate_messages_eus"
-	@echo "... actionlib_generate_messages_lisp"
-	@echo "... actionlib_generate_messages_nodejs"
-	@echo "... actionlib_generate_messages_py"
-	@echo "... roscpp_generate_messages_cpp"
-	@echo "... roscpp_generate_messages_eus"
-	@echo "... roscpp_generate_messages_lisp"
-	@echo "... roscpp_generate_messages_nodejs"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
-	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... rosgraph_msgs_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_nodejs"
-	@echo "... rosgraph_msgs_generate_messages_py"
 	@echo "... darknet_ros"
 	@echo "... darknet_ros_lib"
 	@echo "... __/darknet/src/activation_layer.o"

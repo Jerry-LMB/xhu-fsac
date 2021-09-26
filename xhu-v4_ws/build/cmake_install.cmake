@@ -136,8 +136,12 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/xhu-fsac/xhu-v4_ws/build/gtest/cmake_install.cmake")
+  include("/home/xhu-fsac/xhu-v4_ws/build/CAN_Com/cmake_install.cmake")
+  include("/home/xhu-fsac/xhu-v4_ws/build/InerNavi/cmake_install.cmake")
   include("/home/xhu-fsac/xhu-v4_ws/build/darknet_ros/darknet_ros_msgs/cmake_install.cmake")
+  include("/home/xhu-fsac/xhu-v4_ws/build/RxBouningBox/cmake_install.cmake")
   include("/home/xhu-fsac/xhu-v4_ws/build/darknet_ros/darknet_ros/cmake_install.cmake")
+  include("/home/xhu-fsac/xhu-v4_ws/build/usb_cam/cmake_install.cmake")
 
 endif()
 
