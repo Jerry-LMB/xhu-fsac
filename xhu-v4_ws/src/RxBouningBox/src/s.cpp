@@ -35,7 +35,6 @@ double  y = 0.0;//b_是指蓝色的锥桶，r_是指红色的锥桶
 uint8_t r_flag = 0;//定义的比较标志位，置1才执行比较
 uint8_t b_flag = 0;
 uint8_t c_flag = 0;
-uint8_t s_flag = 0;
 std::vector<Position> red;//定义的ｖｅｃｔｏｒ数组类，来储存左边和右边的距离值，不同的值
 std::vector<Position> blue;
 double g_x = 0.0;
@@ -91,7 +90,7 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr & msg)
   }//只进一次，来储存第一帧的点
   for (uint8_t i = 0; i < msg->bounding_boxes.size(); i++)
   { 
-    if((msg->bounding_boxes[i].Class == "red") == 1 && msg->bounding_boxes[i].ymax >=288 && X > 0)//改为订阅颜色来存储
+    if((msg->bounding_boxes[i].Class == "red") == 1 && msg->bounding_boxes[i].ymax >=330 && X > 0)//改为订阅颜色来存储
     {     
           x = (msg->bounding_boxes[i].distancey)/100.0-dd;//将每次来的值从相机坐标系转化为车身坐标系，并且将距离单位转化为m
           y = -(msg->bounding_boxes[i].distancex)/100.0;
@@ -125,8 +124,8 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr & msg)
           }
       }
     }   
-    ///红色改  结束****************************************8//////////////////////////////////////
-    if ((msg->bounding_boxes[i].Class == "blue") == 1  && msg->bounding_boxes[i].ymax >= 288 && X > 0 )
+    ///红色改  结束****************************************//////////////////////////////////////
+    if ((msg->bounding_boxes[i].Class == "blue") == 1  && msg->bounding_boxes[i].ymax >= 330 && X > 0 )
     {
           x = (msg->bounding_boxes[i].distancey)/100.0-dd;//将坐标值赴给车身坐标系并转化为ｍ为单位
           y = -(msg->bounding_boxes[i].distancex)/100.0;
@@ -167,11 +166,14 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr & msg)
     {
        x = (blue[blue.size()-1].x  + blue[blue.size()-2].x + red[red.size()-1].x + red[red.size()-2].x)/4;
        y = (blue[blue.size()-1].y + blue[blue.size()-2].y + red[red.size()-1].y + red[red.size()-2].y)/4;//利用重心法进行点的发布
+       //求平均值
+       //x = (blue[blue.size()-1].x  + red[red.size()-1].x)/2;
+       //y = (blue[blue.size()-1].y  + red[red.size()-1].y)/2;
        if (c_flag == 0)
        {
-        // p.position.x = X;
-        // p.position.y = Y;
-        // center.poses.push_back(p);
+        p.position.x = X;
+        p.position.y = Y;
+        center.poses.push_back(p);
         p.position.x = x;
         p.position.y = y;
         center.poses.push_back(p);
@@ -199,8 +201,7 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr & msg)
           }
         } 
     }
-    
-       //    ***************************************///////////////结束  ////////////////
+    //***************************************///////////////结束  ////////////////
     //经过上面两次判断，直接就能把偏移的中心点，存入center中
     for (std::vector<Position>::iterator it = red.begin();it!= red.end();it++)
       {

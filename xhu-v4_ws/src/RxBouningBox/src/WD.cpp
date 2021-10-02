@@ -184,15 +184,15 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
           p.position.y = Y;
           center.poses.push_back(p);
         }
-        p.position.x = blue[0].x - 1.5*sin(theta*D2R);
-        p.position.y = blue[0].y  + 1.5*cos(theta*D2R) ;
+        p.position.x = blue[0].x - 1.7*sin(theta*D2R);
+        p.position.y = blue[0].y  + 1.7*cos(theta*D2R) ;//9.27 改偏移1.7
         center.poses.push_back(p);
         count3 = 1;
         }
         if (c_flag ==1)//这里可能有bug，这里比较的点要是上一次不能够动的点
         { 
-            c_x = blue[0].x - 1.5*sin(theta*D2R);
-            c_y = blue[0].y  + 1.5*cos(theta*D2R);
+            c_x = blue[0].x - 1.7*sin(theta*D2R);
+            c_y = blue[0].y  + 1.7*cos(theta*D2R);
           for (auto it = center.poses.begin();it!= center.poses.end();it++)
           {
             if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 2 )
@@ -218,26 +218,26 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
         {
           if(blue[j+1].x > blue[j].x && blue[j+1].y < blue[j].y)// 四象限
           {
-            c_x = blue[j+1].x - 1.5*sin(th);
-            c_y = blue[j+1].y + 1.5*cos(th);
+            c_x = blue[j+1].x - 1.7*sin(th);
+            c_y = blue[j+1].y + 1.7*cos(th);
           }
           if(blue[j+1].x < blue[j].x && blue[j+1].y > blue[j].y) // 二象限
           {
-            c_x = blue[j+1].x + 1.5*sin(th);
-            c_y = blue[j+1].y - 1.5*cos(th);
+            c_x = blue[j+1].x + 1.7*sin(th);
+            c_y = blue[j+1].y - 1.7*cos(th);
           }
         }
         if(th >= 0)
         {
           if(blue[j+1].x > blue[j].x && blue[j+1].y > blue[j].y)// 一象限
           {
-            c_x = blue[j+1].x - 1.5*sin(th);
-            c_y = blue[j+1].y + 1.5*cos(th);
+            c_x = blue[j+1].x - 1.7*sin(th);
+            c_y = blue[j+1].y + 1.7*cos(th);
           }
           if(blue[j+1].x < blue[j].x && blue[j+1].y < blue[j].y)// 三象限
           {
-            c_x = blue[j+1].x + 1.5*sin(th);
-            c_y = blue[j+1].y - 1.5*cos(th);
+            c_x = blue[j+1].x + 1.7*sin(th);
+            c_y = blue[j+1].y - 1.7*cos(th);
           }
         }
         if(c_flag == 0)
@@ -281,34 +281,34 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
         {
           if(blue[j+1].x > blue[j].x && blue[j+1].y < blue[j].y)// 四象限
           {
-            c_x = blue[j+1].x - 1.5*sin(th);
-            c_y = blue[j+1].y + 1.5*cos(th);
-            c_x1 = blue[j].x - 1.5*sin(th);
-            c_y1 = blue[j].y + 1.5*cos(th);
+            c_x = blue[j+1].x - 1.7*sin(th);
+            c_y = blue[j+1].y + 1.7*cos(th);
+            c_x1 = blue[j].x - 1.7*sin(th);
+            c_y1 = blue[j].y + 1.7*cos(th);
           }
           if(blue[j+1].x < blue[j].x && blue[j+1].y > blue[j].y) // 二象限
           {
-            c_x = blue[j+1].x + 1.5*sin(th);
-            c_y = blue[j+1].y - 1.5*cos(th);
-            c_x1 = blue[j].x - 1.5*sin(th);
-            c_y1 = blue[j].y + 1.5*cos(th);
+            c_x = blue[j+1].x + 1.7*sin(th);
+            c_y = blue[j+1].y - 1.7*cos(th);
+            c_x1 = blue[j].x - 1.7*sin(th);
+            c_y1 = blue[j].y + 1.7*cos(th);
           }
         }
         if(th >= 0)
         {
           if(blue[j+1].x > blue[j].x && blue[j+1].y > blue[j].y)// 一象限
           {
-            c_x = blue[j+1].x - 1.5*sin(th);
-            c_y = blue[j+1].y + 1.5*cos(th);
-            c_x1 = blue[j].x - 1.5*sin(th);
-            c_y1 = blue[j].y + 1.5*cos(th);
+            c_x = blue[j+1].x - 1.7*sin(th);
+            c_y = blue[j+1].y + 1.7*cos(th);
+            c_x1 = blue[j].x - 1.7*sin(th);
+            c_y1 = blue[j].y + 1.7*cos(th);
           }
           if(blue[j+1].x < blue[j].x && blue[j+1].y < blue[j].y)// 三象限
           {
-            c_x = blue[j+1].x + 1.5*sin(th);
-            c_y = blue[j+1].y - 1.5*cos(th);
-            c_x1 = blue[j].x - 1.5*sin(th);
-            c_y1 = blue[j].y + 1.5*cos(th);
+            c_x = blue[j+1].x + 1.7*sin(th);
+            c_y = blue[j+1].y - 1.7*cos(th);
+            c_x1 = blue[j].x - 1.7*sin(th);
+            c_y1 = blue[j].y + 1.7*cos(th);
           }
         }
         if(c_flag == 0)
@@ -353,26 +353,26 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
         {
           if(blue[j+1].x > blue[j].x && blue[j+1].y < blue[j].y)// 四象限
           {
-            c_x = blue[j+1].x - 1.5*sin(th);
-            c_y = blue[j+1].y + 1.5*cos(th);
+            c_x = blue[j+1].x - 1.7*sin(th);
+            c_y = blue[j+1].y + 1.7*cos(th);
           }
           if(blue[j+1].x < blue[j].x && blue[j+1].y > blue[j].y) // 二象限
           {
-            c_x = blue[j+1].x + 1.5*sin(th);
-            c_y = blue[j+1].y - 1.5*cos(th);
+            c_x = blue[j+1].x + 1.7*sin(th);
+            c_y = blue[j+1].y - 1.7*cos(th);
           }
         }
         if(th >= 0)
         {
           if(blue[j+1].x > blue[j].x && blue[j+1].y > blue[j].y)// 一象限
           {
-            c_x = blue[j+1].x - 1.5*sin(th);
-            c_y = blue[j+1].y + 1.5*cos(th);
+            c_x = blue[j+1].x - 1.7*sin(th);
+            c_y = blue[j+1].y + 1.7*cos(th);
           }
           if(blue[j+1].x < blue[j].x && blue[j+1].y < blue[j].y)// 三象限
           {
-            c_x = blue[j+1].x + 1.5*sin(th);
-            c_y = blue[j+1].y - 1.5*cos(th);
+            c_x = blue[j+1].x + 1.7*sin(th);
+            c_y = blue[j+1].y - 1.7*cos(th);
           }
         }
         if(c_flag == 0)
