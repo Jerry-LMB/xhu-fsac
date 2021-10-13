@@ -268,8 +268,6 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
         } 
       }
     }   ////  结束 /////////////////////////////////////////////
-
-
       //当第一帧进来的是两个点时 ///////////////////////这个和第一次进来一个点时 ，就只能运行一个
    if(blue.size() == 2 && X > 0 && center.poses.size() ==0)//偏移算法
     {

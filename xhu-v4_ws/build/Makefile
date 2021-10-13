@@ -1420,17 +1420,17 @@ eightNode/fast:
 .PHONY : eightNode/fast
 
 #=============================================================================
-# Target rules for targets named ENode
+# Target rules for targets named line_node
 
 # Build rule for target.
-ENode: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ENode
-.PHONY : ENode
+line_node: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 line_node
+.PHONY : line_node
 
 # fast build rule for target.
-ENode/fast:
-	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/ENode.dir/build.make RxBouningBox/CMakeFiles/ENode.dir/build
-.PHONY : ENode/fast
+line_node/fast:
+	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/line_node.dir/build.make RxBouningBox/CMakeFiles/line_node.dir/build
+.PHONY : line_node/fast
 
 #=============================================================================
 # Target rules for targets named RxBouningBox_generate_messages_lisp
@@ -1665,7 +1665,6 @@ help:
 	@echo "... tf_generate_messages_lisp"
 	@echo "... tf_generate_messages_nodejs"
 	@echo "... tf_generate_messages_py"
-	@echo "... ENode"
 	@echo "... InerNa"
 	@echo "... InerNavi"
 	@echo "... InerNavigation"
@@ -1680,6 +1679,7 @@ help:
 	@echo "... gmock_main"
 	@echo "... gtest"
 	@echo "... gtest_main"
+	@echo "... line_node"
 	@echo "... usb_cam"
 	@echo "... usb_cam_node"
 .PHONY : help

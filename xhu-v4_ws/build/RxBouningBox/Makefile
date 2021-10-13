@@ -396,18 +396,18 @@ eightNode/fast:
 .PHONY : eightNode/fast
 
 # Convenience name for target.
-RxBouningBox/CMakeFiles/ENode.dir/rule:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RxBouningBox/CMakeFiles/ENode.dir/rule
-.PHONY : RxBouningBox/CMakeFiles/ENode.dir/rule
+RxBouningBox/CMakeFiles/line_node.dir/rule:
+	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RxBouningBox/CMakeFiles/line_node.dir/rule
+.PHONY : RxBouningBox/CMakeFiles/line_node.dir/rule
 
 # Convenience name for target.
-ENode: RxBouningBox/CMakeFiles/ENode.dir/rule
-.PHONY : ENode
+line_node: RxBouningBox/CMakeFiles/line_node.dir/rule
+.PHONY : line_node
 
 # fast build rule for target.
-ENode/fast:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/ENode.dir/build.make RxBouningBox/CMakeFiles/ENode.dir/build
-.PHONY : ENode/fast
+line_node/fast:
+	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/line_node.dir/build.make RxBouningBox/CMakeFiles/line_node.dir/build
+.PHONY : line_node/fast
 
 # Convenience name for target.
 RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/rule:
@@ -495,29 +495,29 @@ src/eight.cpp.s:
 	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/eightNode.dir/build.make RxBouningBox/CMakeFiles/eightNode.dir/src/eight.cpp.s
 .PHONY : src/eight.cpp.s
 
-src/pianyi.o: src/pianyi.cpp.o
-.PHONY : src/pianyi.o
+src/line.o: src/line.cpp.o
+.PHONY : src/line.o
 
 # target to build an object file
-src/pianyi.cpp.o:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/ENode.dir/build.make RxBouningBox/CMakeFiles/ENode.dir/src/pianyi.cpp.o
-.PHONY : src/pianyi.cpp.o
+src/line.cpp.o:
+	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/line_node.dir/build.make RxBouningBox/CMakeFiles/line_node.dir/src/line.cpp.o
+.PHONY : src/line.cpp.o
 
-src/pianyi.i: src/pianyi.cpp.i
-.PHONY : src/pianyi.i
+src/line.i: src/line.cpp.i
+.PHONY : src/line.i
 
 # target to preprocess a source file
-src/pianyi.cpp.i:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/ENode.dir/build.make RxBouningBox/CMakeFiles/ENode.dir/src/pianyi.cpp.i
-.PHONY : src/pianyi.cpp.i
+src/line.cpp.i:
+	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/line_node.dir/build.make RxBouningBox/CMakeFiles/line_node.dir/src/line.cpp.i
+.PHONY : src/line.cpp.i
 
-src/pianyi.s: src/pianyi.cpp.s
-.PHONY : src/pianyi.s
+src/line.s: src/line.cpp.s
+.PHONY : src/line.s
 
 # target to generate assembly for a file
-src/pianyi.cpp.s:
-	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/ENode.dir/build.make RxBouningBox/CMakeFiles/ENode.dir/src/pianyi.cpp.s
-.PHONY : src/pianyi.cpp.s
+src/line.cpp.s:
+	cd /home/xhu-fsac/xhu-v4_ws/build && $(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/line_node.dir/build.make RxBouningBox/CMakeFiles/line_node.dir/src/line.cpp.s
+.PHONY : src/line.cpp.s
 
 src/s.o: src/s.cpp.o
 .PHONY : src/s.o
@@ -569,11 +569,11 @@ help:
 	@echo "... RxBouningBox_genpy"
 	@echo "... _RxBouningBox_generate_messages_check_deps_point"
 	@echo "... _RxBouningBox_generate_messages_check_deps_point_array"
-	@echo "... ENode"
 	@echo "... RXNode"
 	@echo "... S_node"
 	@echo "... WDNode"
 	@echo "... eightNode"
+	@echo "... line_node"
 	@echo "... src/RXboundingBox.o"
 	@echo "... src/RXboundingBox.i"
 	@echo "... src/RXboundingBox.s"
@@ -583,9 +583,9 @@ help:
 	@echo "... src/eight.o"
 	@echo "... src/eight.i"
 	@echo "... src/eight.s"
-	@echo "... src/pianyi.o"
-	@echo "... src/pianyi.i"
-	@echo "... src/pianyi.s"
+	@echo "... src/line.o"
+	@echo "... src/line.i"
+	@echo "... src/line.s"
 	@echo "... src/s.o"
 	@echo "... src/s.i"
 	@echo "... src/s.s"

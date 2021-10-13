@@ -185,7 +185,7 @@ RxBouningBox/all: RxBouningBox/CMakeFiles/S_node.dir/all
 RxBouningBox/all: RxBouningBox/CMakeFiles/RXNode.dir/all
 RxBouningBox/all: RxBouningBox/CMakeFiles/WDNode.dir/all
 RxBouningBox/all: RxBouningBox/CMakeFiles/eightNode.dir/all
-RxBouningBox/all: RxBouningBox/CMakeFiles/ENode.dir/all
+RxBouningBox/all: RxBouningBox/CMakeFiles/line_node.dir/all
 .PHONY : RxBouningBox/all
 
 # Recursive "preinstall" directory target.
@@ -209,7 +209,7 @@ RxBouningBox/clean: RxBouningBox/CMakeFiles/RxBouningBox_genpy.dir/clean
 RxBouningBox/clean: RxBouningBox/CMakeFiles/RXNode.dir/clean
 RxBouningBox/clean: RxBouningBox/CMakeFiles/WDNode.dir/clean
 RxBouningBox/clean: RxBouningBox/CMakeFiles/eightNode.dir/clean
-RxBouningBox/clean: RxBouningBox/CMakeFiles/ENode.dir/clean
+RxBouningBox/clean: RxBouningBox/CMakeFiles/line_node.dir/clean
 RxBouningBox/clean: RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/clean
 .PHONY : RxBouningBox/clean
 
@@ -473,7 +473,7 @@ CMakeFiles/doxygen.dir/clean:
 gtest/googlemock/CMakeFiles/gmock_main.dir/all:
 	$(MAKE) $(MAKESILENT) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=94,95 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=93,94 "Built target gmock_main"
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -499,7 +499,7 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/clean:
 gtest/googlemock/CMakeFiles/gmock.dir/all:
 	$(MAKE) $(MAKESILENT) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/depend
 	$(MAKE) $(MAKESILENT) -f gtest/googlemock/CMakeFiles/gmock.dir/build.make gtest/googlemock/CMakeFiles/gmock.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=92,93 "Built target gmock"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=91,92 "Built target gmock"
 .PHONY : gtest/googlemock/CMakeFiles/gmock.dir/all
 
 # Build rule for subdir invocation for target.
@@ -525,7 +525,7 @@ gtest/googlemock/CMakeFiles/gmock.dir/clean:
 gtest/googlemock/gtest/CMakeFiles/gtest.dir/all:
 	$(MAKE) $(MAKESILENT) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/depend
 	$(MAKE) $(MAKESILENT) -f gtest/googlemock/gtest/CMakeFiles/gtest.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=96 "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=95 "Built target gtest"
 .PHONY : gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
@@ -551,7 +551,7 @@ gtest/googlemock/gtest/CMakeFiles/gtest.dir/clean:
 gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all: gtest/googlemock/gtest/CMakeFiles/gtest.dir/all
 	$(MAKE) $(MAKESILENT) -f gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) $(MAKESILENT) -f gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=97 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=96 "Built target gtest_main"
 .PHONY : gtest/googlemock/gtest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1089,12 +1089,12 @@ CAN_Com/CMakeFiles/canalystii_ros_node.dir/all: CAN_Com/CMakeFiles/actionlib_msg
 CAN_Com/CMakeFiles/canalystii_ros_node.dir/all: CAN_Com/CMakeFiles/tf2_msgs_generate_messages_py.dir/all
 	$(MAKE) $(MAKESILENT) -f CAN_Com/CMakeFiles/canalystii_ros_node.dir/build.make CAN_Com/CMakeFiles/canalystii_ros_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f CAN_Com/CMakeFiles/canalystii_ros_node.dir/build.make CAN_Com/CMakeFiles/canalystii_ros_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=15 "Built target canalystii_ros_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=13,14 "Built target canalystii_ros_node"
 .PHONY : CAN_Com/CMakeFiles/canalystii_ros_node.dir/all
 
 # Build rule for subdir invocation for target.
 CAN_Com/CMakeFiles/canalystii_ros_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 2
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CAN_Com/CMakeFiles/canalystii_ros_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 0
 .PHONY : CAN_Com/CMakeFiles/canalystii_ros_node.dir/rule
@@ -1817,7 +1817,7 @@ CAN_Com/CMakeFiles/tf2_msgs_generate_messages_py.dir/clean:
 InerNavi/CMakeFiles/InerNavi.dir/all:
 	$(MAKE) $(MAKESILENT) -f InerNavi/CMakeFiles/InerNavi.dir/build.make InerNavi/CMakeFiles/InerNavi.dir/depend
 	$(MAKE) $(MAKESILENT) -f InerNavi/CMakeFiles/InerNavi.dir/build.make InerNavi/CMakeFiles/InerNavi.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=3 "Built target InerNavi"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=2 "Built target InerNavi"
 .PHONY : InerNavi/CMakeFiles/InerNavi.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1863,7 +1863,7 @@ InerNavi/CMakeFiles/InerNa.dir/all: CAN_Com/CMakeFiles/std_msgs_generate_message
 InerNavi/CMakeFiles/InerNa.dir/all: InerNavi/CMakeFiles/InerNavi.dir/all
 	$(MAKE) $(MAKESILENT) -f InerNavi/CMakeFiles/InerNa.dir/build.make InerNavi/CMakeFiles/InerNa.dir/depend
 	$(MAKE) $(MAKESILENT) -f InerNavi/CMakeFiles/InerNa.dir/build.make InerNavi/CMakeFiles/InerNa.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=2 "Built target InerNa"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=1 "Built target InerNa"
 .PHONY : InerNavi/CMakeFiles/InerNa.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1909,7 +1909,7 @@ InerNavi/CMakeFiles/InerNavigation.dir/all: CAN_Com/CMakeFiles/std_msgs_generate
 InerNavi/CMakeFiles/InerNavigation.dir/all: InerNavi/CMakeFiles/InerNavi.dir/all
 	$(MAKE) $(MAKESILENT) -f InerNavi/CMakeFiles/InerNavigation.dir/build.make InerNavi/CMakeFiles/InerNavigation.dir/depend
 	$(MAKE) $(MAKESILENT) -f InerNavi/CMakeFiles/InerNavigation.dir/build.make InerNavi/CMakeFiles/InerNavigation.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=4 "Built target InerNavigation"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=3 "Built target InerNavigation"
 .PHONY : InerNavi/CMakeFiles/InerNavigation.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2026,12 +2026,12 @@ darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.
 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.dir/all: darknet_ros/darknet_ros_msgs/CMakeFiles/_darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsActionResult.dir/all
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=75,76,77,78,79 "Built target darknet_ros_msgs_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=73,74,75,76,77,78 "Built target darknet_ros_msgs_generate_messages_lisp"
 .PHONY : darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 0
 .PHONY : darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_lisp.dir/rule
@@ -2057,7 +2057,7 @@ darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_genlisp.dir/all: darkne
 
 # Build rule for subdir invocation for target.
 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 0
 .PHONY : darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_genlisp.dir/rule
@@ -2225,7 +2225,7 @@ darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_cpp.d
 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_cpp.dir/all: darknet_ros/darknet_ros_msgs/CMakeFiles/_darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsActionResult.dir/all
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_cpp.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_cpp.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=63,64,65,66,67,68 "Built target darknet_ros_msgs_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=62,63,64,65,66,67 "Built target darknet_ros_msgs_generate_messages_cpp"
 .PHONY : darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2420,12 +2420,12 @@ darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.d
 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.dir/all: darknet_ros/darknet_ros_msgs/CMakeFiles/_darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsActionResult.dir/all
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.dir/depend
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=69,70,71,72,73,74 "Built target darknet_ros_msgs_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=68,69,70,71,72 "Built target darknet_ros_msgs_generate_messages_eus"
 .PHONY : darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 0
 .PHONY : darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_eus.dir/rule
@@ -2451,7 +2451,7 @@ darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_geneus.dir/all: darknet
 
 # Build rule for subdir invocation for target.
 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 5
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 0
 .PHONY : darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_geneus.dir/rule
@@ -2485,7 +2485,7 @@ darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_nodej
 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_nodejs.dir/all: darknet_ros/darknet_ros_msgs/CMakeFiles/_darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsActionResult.dir/all
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_nodejs.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_nodejs.dir/depend
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_nodejs.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=80,81,82,83,84 "Built target darknet_ros_msgs_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=79,80,81,82,83 "Built target darknet_ros_msgs_generate_messages_nodejs"
 .PHONY : darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2524,7 +2524,7 @@ darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_py.di
 darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_py.dir/all: darknet_ros/darknet_ros_msgs/CMakeFiles/_darknet_ros_msgs_generate_messages_check_deps_CheckForObjectsActionResult.dir/all
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_py.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_py.dir/depend
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_py.dir/build.make darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=85,86,87,88,89,90 "Built target darknet_ros_msgs_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=84,85,86,87,88,89 "Built target darknet_ros_msgs_generate_messages_py"
 .PHONY : darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2578,7 +2578,7 @@ RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_nodejs.dir/all: RxBouning
 RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_nodejs.dir/all: RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/all
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_nodejs.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_nodejs.dir/depend
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_nodejs.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=10 "Built target RxBouningBox_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=9 "Built target RxBouningBox_generate_messages_nodejs"
 .PHONY : RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2606,7 +2606,7 @@ RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_eus.dir/all: RxBouningBox
 RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_eus.dir/all: RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/all
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_eus.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_eus.dir/depend
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_eus.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=7,8 "Built target RxBouningBox_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=6,7 "Built target RxBouningBox_generate_messages_eus"
 .PHONY : RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2660,7 +2660,7 @@ RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_cpp.dir/all: RxBouningBox
 RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_cpp.dir/all: RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/all
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_cpp.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_cpp.dir/depend
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_cpp.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=6 "Built target RxBouningBox_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=5 "Built target RxBouningBox_generate_messages_cpp"
 .PHONY : RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2742,7 +2742,7 @@ RxBouningBox/CMakeFiles/RxBouningBox_genlisp.dir/clean:
 RxBouningBox/CMakeFiles/S_node.dir/all:
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/S_node.dir/build.make RxBouningBox/CMakeFiles/S_node.dir/depend
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/S_node.dir/build.make RxBouningBox/CMakeFiles/S_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=12 "Built target S_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=11 "Built target S_node"
 .PHONY : RxBouningBox/CMakeFiles/S_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2874,7 +2874,7 @@ RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_py.dir/all: RxBouningBox/
 RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_py.dir/all: RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/all
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_py.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_py.dir/depend
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_py.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=11 "Built target RxBouningBox_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=10 "Built target RxBouningBox_generate_messages_py"
 .PHONY : RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2926,7 +2926,7 @@ RxBouningBox/CMakeFiles/RxBouningBox_genpy.dir/clean:
 RxBouningBox/CMakeFiles/RXNode.dir/all:
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RXNode.dir/build.make RxBouningBox/CMakeFiles/RXNode.dir/depend
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RXNode.dir/build.make RxBouningBox/CMakeFiles/RXNode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=5 "Built target RXNode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=4 "Built target RXNode"
 .PHONY : RxBouningBox/CMakeFiles/RXNode.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2952,12 +2952,12 @@ RxBouningBox/CMakeFiles/RXNode.dir/clean:
 RxBouningBox/CMakeFiles/WDNode.dir/all:
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/WDNode.dir/build.make RxBouningBox/CMakeFiles/WDNode.dir/depend
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/WDNode.dir/build.make RxBouningBox/CMakeFiles/WDNode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=13,14 "Built target WDNode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=12 "Built target WDNode"
 .PHONY : RxBouningBox/CMakeFiles/WDNode.dir/all
 
 # Build rule for subdir invocation for target.
 RxBouningBox/CMakeFiles/WDNode.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 1
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RxBouningBox/CMakeFiles/WDNode.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 0
 .PHONY : RxBouningBox/CMakeFiles/WDNode.dir/rule
@@ -2978,7 +2978,7 @@ RxBouningBox/CMakeFiles/WDNode.dir/clean:
 RxBouningBox/CMakeFiles/eightNode.dir/all:
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/eightNode.dir/build.make RxBouningBox/CMakeFiles/eightNode.dir/depend
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/eightNode.dir/build.make RxBouningBox/CMakeFiles/eightNode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=91 "Built target eightNode"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=90 "Built target eightNode"
 .PHONY : RxBouningBox/CMakeFiles/eightNode.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2998,30 +2998,30 @@ RxBouningBox/CMakeFiles/eightNode.dir/clean:
 .PHONY : RxBouningBox/CMakeFiles/eightNode.dir/clean
 
 #=============================================================================
-# Target rules for target RxBouningBox/CMakeFiles/ENode.dir
+# Target rules for target RxBouningBox/CMakeFiles/line_node.dir
 
 # All Build rule for target.
-RxBouningBox/CMakeFiles/ENode.dir/all:
-	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/ENode.dir/build.make RxBouningBox/CMakeFiles/ENode.dir/depend
-	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/ENode.dir/build.make RxBouningBox/CMakeFiles/ENode.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=1 "Built target ENode"
-.PHONY : RxBouningBox/CMakeFiles/ENode.dir/all
+RxBouningBox/CMakeFiles/line_node.dir/all:
+	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/line_node.dir/build.make RxBouningBox/CMakeFiles/line_node.dir/depend
+	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/line_node.dir/build.make RxBouningBox/CMakeFiles/line_node.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=97 "Built target line_node"
+.PHONY : RxBouningBox/CMakeFiles/line_node.dir/all
 
 # Build rule for subdir invocation for target.
-RxBouningBox/CMakeFiles/ENode.dir/rule: cmake_check_build_system
+RxBouningBox/CMakeFiles/line_node.dir/rule: cmake_check_build_system
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 1
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RxBouningBox/CMakeFiles/ENode.dir/all
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 RxBouningBox/CMakeFiles/line_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/xhu-fsac/xhu-v4_ws/build/CMakeFiles 0
-.PHONY : RxBouningBox/CMakeFiles/ENode.dir/rule
+.PHONY : RxBouningBox/CMakeFiles/line_node.dir/rule
 
 # Convenience name for target.
-ENode: RxBouningBox/CMakeFiles/ENode.dir/rule
-.PHONY : ENode
+line_node: RxBouningBox/CMakeFiles/line_node.dir/rule
+.PHONY : line_node
 
 # clean rule for target.
-RxBouningBox/CMakeFiles/ENode.dir/clean:
-	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/ENode.dir/build.make RxBouningBox/CMakeFiles/ENode.dir/clean
-.PHONY : RxBouningBox/CMakeFiles/ENode.dir/clean
+RxBouningBox/CMakeFiles/line_node.dir/clean:
+	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/line_node.dir/build.make RxBouningBox/CMakeFiles/line_node.dir/clean
+.PHONY : RxBouningBox/CMakeFiles/line_node.dir/clean
 
 #=============================================================================
 # Target rules for target RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir
@@ -3032,7 +3032,7 @@ RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/all: RxBouningBo
 RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/all: RxBouningBox/CMakeFiles/_RxBouningBox_generate_messages_check_deps_point_array.dir/all
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/depend
 	$(MAKE) $(MAKESILENT) -f RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/build.make RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=9 "Built target RxBouningBox_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=8 "Built target RxBouningBox_generate_messages_lisp"
 .PHONY : RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -3058,7 +3058,7 @@ RxBouningBox/CMakeFiles/RxBouningBox_generate_messages_lisp.dir/clean:
 darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/all: darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/all
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/build.make darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/depend
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/build.make darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=16 "Built target darknet_ros"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=15 "Built target darknet_ros"
 .PHONY : darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/all
 
 # Build rule for subdir invocation for target.
@@ -3084,7 +3084,7 @@ darknet_ros/darknet_ros/CMakeFiles/darknet_ros.dir/clean:
 darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/all: darknet_ros/darknet_ros_msgs/CMakeFiles/darknet_ros_msgs_generate_messages_cpp.dir/all
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/build.make darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/depend
 	$(MAKE) $(MAKESILENT) -f darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/build.make darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61,62 "Built target darknet_ros_lib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/xhu-fsac/xhu-v4_ws/build/CMakeFiles --progress-num=16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,50,51,52,53,54,55,56,57,58,59,60,61 "Built target darknet_ros_lib"
 .PHONY : darknet_ros/darknet_ros/CMakeFiles/darknet_ros_lib.dir/all
 
 # Build rule for subdir invocation for target.

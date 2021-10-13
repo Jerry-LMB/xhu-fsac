@@ -38,15 +38,15 @@ class p_and_s
 double X = 0.0;//定义的绝对坐标ｘ;
 double Y = 0.0;//定义的绝对坐标y;
 float  theta = 0.0;//定义航向角;
-double  x_ = 0.0;//定义的车身坐标ｘ;是以车头的前进方向为x,左边为y,
-double  y_ = 0.0;//b_是指蓝色的锥桶，r_是指红色的锥桶
+double  x = 0.0;//定义的车身坐标ｘ;是以车头的前进方向为x,左边为y,
+double  y = 0.0;
 double g_x = 0.0;
 double g_y = 0.0;//设置的一进循环就直接把值转化为绝对坐标系
 uint8_t r_flag = 0;//定义的比较标志位，置1才执行比较
 uint8_t b_flag = 0;
 uint8_t c_flag = 0;
 uint8_t y_flag = 0;
-std::vector<Position> red;//定义的ｖｅｃｔｏｒ数组类，来储存左边和右边的距离值，不同的值
+std::vector<Position> red;//定义的vector数组类，来储存左边和右边的距离值，不同的值
 std::vector<Position> blue;
 std::vector<Position> yellow;
 uint8_t FPS = 0;//计算帧数第一帧
@@ -98,18 +98,17 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
   }//只进一次，来储存第一帧的点
   for (uint8_t i = 0; i < msg->bounding_boxes.size(); i++)
   { 
-    if((msg->bounding_boxes[i].Class == "red") == 1 && msg->bounding_boxes[i].ymax > 288 && X > 0 )//改为订阅颜色来存储
+    if((msg->bounding_boxes[i].Class == "red") == 1 && msg->bounding_boxes[i].ymax > 301 && X > 0 )//改为订阅颜色来存储
     {     
-          x_ = (msg->bounding_boxes[i].distancey)/100.0-dd;//将每次来的值从相机坐标系转化为车身坐标系，并且将距离单位转化为m 
-          y_ = -(msg->bounding_boxes[i].distancex)/100.0;
-          g_x = X + x_*cos(theta*D2R) - y_*sin(theta*D2R);//将进来的值，转化为绝对坐标系
-          g_y = Y + y_*cos(theta*D2R) + x_*sin(theta*D2R);
-
+          x = (msg->bounding_boxes[i].distancey)/100.0-dd;//将每次来的值从相机坐标系转化为车身坐标系，并且将距离单位转化为m 
+          y = -(msg->bounding_boxes[i].distancex)/100.0;
+          g_x = X + x*cos(theta*D2R) - y*sin(theta*D2R);//将进来的值，转化为绝对坐标系
+          g_y = Y + y*cos(theta*D2R) + x*sin(theta*D2R);
       if (r_flag == 0 )//将来的第一帧，近的框的坐标直接放入，vector里面
       { 
         
-        red_.x =  X + x_*cos(theta*D2R) - y_*sin(theta*D2R);//将识别的坐标点转换到绝对坐标系
-        red_.y =  Y + y_*cos(theta*D2R) + x_*sin(theta*D2R);
+        red_.x =  X + x*cos(theta*D2R) - y*sin(theta*D2R);//将识别的坐标点转换到绝对坐标系
+        red_.y =  Y + y*cos(theta*D2R) + x*sin(theta*D2R);
         red.push_back(red_);
         count1 = 1;
       }
@@ -134,12 +133,12 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
       }
     }   
     ///红色改  结束****************************************8//////////////////////////////////////
-    if ((msg->bounding_boxes[i].Class == "blue") == 1  && msg->bounding_boxes[i].ymax > 288 && X > 0)
+    if ((msg->bounding_boxes[i].Class == "blue") == 1  && msg->bounding_boxes[i].ymax > 301 && X > 0)
     {
-          x_ = (msg->bounding_boxes[i].distancey)/100.0-dd;//将坐标值赴给车身坐标系并转化为ｍ为单位
-          y_ = -(msg->bounding_boxes[i].distancex)/100.0;
-          g_x = X + x_*cos(theta*D2R) - y_*sin(theta*D2R);//将识别的坐标点转换到绝对坐标系
-          g_y = Y + y_*cos(theta*D2R) + x_*sin(theta*D2R);
+          x = (msg->bounding_boxes[i].distancey)/100.0-dd;//将坐标值赴给车身坐标系并转化为ｍ为单位
+          y = -(msg->bounding_boxes[i].distancex)/100.0;
+          g_x = X + x*cos(theta*D2R) - y*sin(theta*D2R);//将识别的坐标点转换到绝对坐标系
+          g_y = Y + y*cos(theta*D2R) + x*sin(theta*D2R);
      if (b_flag == 0)
       {
         blue_.x = g_x;//将识别的坐标点转换到绝对坐标系
@@ -167,12 +166,12 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
           }
       } 
     }
-    if ((msg->bounding_boxes[i].Class == "yellow") == 1  && msg->bounding_boxes[i].ymax > 288 && X > 0)
+    if ((msg->bounding_boxes[i].Class == "yellow") == 1  && msg->bounding_boxes[i].ymax > 301 && X > 0)
     {
-          x_ = (msg->bounding_boxes[i].distancey)/100.0-dd;//将坐标值赴给车身坐标系并转化为ｍ为单位
-          y_ = -(msg->bounding_boxes[i].distancex)/100.0;
-          g_x = X + x_*cos(theta*D2R) - y_*sin(theta*D2R);//将识别的坐标点转换到绝对坐标系
-          g_y = Y + y_*cos(theta*D2R) + x_*sin(theta*D2R);
+          x = (msg->bounding_boxes[i].distancey)/100.0-dd;//将坐标值赴给车身坐标系并转化为ｍ为单位
+          y = -(msg->bounding_boxes[i].distancex)/100.0;
+          g_x = X + x*cos(theta*D2R) - y*sin(theta*D2R);//将识别的坐标点转换到绝对坐标系
+          g_y = Y + y*cos(theta*D2R) + x*sin(theta*D2R);
      if (y_flag == 0)
       {
         yellow_.x = g_x;//将识别的坐标点转换到绝对坐标系

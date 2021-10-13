@@ -309,7 +309,7 @@ void CallBack_GPS(const geometry_msgs::Pose2D::ConstPtr &msg)//gps回调函数�
 int main(int argc, char *argv[])
 {
   ros::init(argc,argv,"RxNode");//初始化节点
-  p_and_s SAPObject;//调用改类
+  p_and_s SAPObject;//调用该类
   ros::spin();//一直在此处循环
   return 0;
 }

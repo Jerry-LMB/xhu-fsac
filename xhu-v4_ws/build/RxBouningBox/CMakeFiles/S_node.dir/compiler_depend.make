@@ -1351,8 +1351,11 @@ RxBouningBox/CMakeFiles/S_node.dir/src/s.cpp.o: /home/xhu-fsac/xhu-v4_ws/src/RxB
   /opt/ros/melodic/include/message_filters/synchronizer.h \
   /opt/ros/melodic/include/message_filters/connection.h \
   /opt/ros/melodic/include/message_filters/null_types.h \
-  /opt/ros/melodic/include/message_filters/signal9.h
+  /opt/ros/melodic/include/message_filters/signal9.h \
+  /opt/ros/melodic/include/std_msgs/UInt8.h
 
+
+/opt/ros/melodic/include/std_msgs/UInt8.h:
 
 /usr/include/c++/7/deque:
 
