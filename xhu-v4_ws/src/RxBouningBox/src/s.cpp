@@ -224,29 +224,29 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr & msg)
     }   
     } //储存点 到这里结束
     ///////////// 下面开始就是存储和偏移的中心点///////////////////////////////////////
-     if (yellow.size() >=2 && X >0)//到时候改成四个点的黄色
-      {
-        if (t_flag == 0)
-        {      
-        p.position.x = X;
-        p.position.y = Y;
-        center.poses.push_back(p);
-        // p.position.x = (yellow[0].x+yellow[1].x+yellow[2].x+yellow[3].x)/4;
-        // p.position.y =  (yellow[0].y+yellow[1].y+yellow[2].y+yellow[3].y)/4;
-         p.position.x = (yellow[yellow.size()-1].x+yellow[yellow.size()-2].x)/2;
-         p.position.y =  (yellow[yellow.size()-1].y+yellow[yellow.size()-2].y)/2;
-        center.poses.push_back(p);
-        count7 = 1;
-        test =1;
-        }
-        if (t_flag == 1)
-        {
-          //此时黄色储存完毕
-        }
-      }
+    //  if (yellow.size() ==2 && X >0)//到时候改成四个点的黄色
+    //   {
+    //     if (t_flag == 0)
+    //     {      
+    //     p.position.x = X;
+    //     p.position.y = Y;
+    //     center.poses.push_back(p);
+    //     // p.position.x = (yellow[0].x+yellow[1].x+yellow[2].x+yellow[3].x)/4;
+    //     // p.position.y =  (yellow[0].y+yellow[1].y+yellow[2].y+yellow[3].y)/4;
+    //      p.position.x = (yellow[yellow.size()-1].x+yellow[yellow.size()-2].x)/2;
+    //      p.position.y =  (yellow[yellow.size()-1].y+yellow[yellow.size()-2].y)/2;
+    //     center.poses.push_back(p);
+    //     count7 = 1;
+    //     test =1;
+    //     }
+    //     if (t_flag == 1)
+    //     {
+    //       //此时黄色储存完毕
+    //     }
+    //   }
       //黄色给点完毕/////////////////////////////////
       //重心给点法//////////////////
-    if (blue.size() >=2 &&red.size()>=2 && X >0)
+    if (blue.size() >=1 &&red.size()>=1 && X >0)
     {
       //  x = (blue[blue.size()-1].x  + blue[blue.size()-2].x + red[red.size()-1].x + red[red.size()-2].x)/4;
       //  y = (blue[blue.size()-1].y + blue[blue.size()-2].y + red[red.size()-1].y + red[red.size()-2].y)/4;//利用重心法进行点的发布
@@ -255,13 +255,14 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr & msg)
        y = (blue[blue.size()-1].y  + red[red.size()-1].y)/2;
        if (c_flag == 0)
        {
-        // p.position.x = X;
-        // p.position.y = Y;
-        // center.poses.push_back(p);
+        p.position.x = X;
+        p.position.y = Y;
+        center.poses.push_back(p);
         p.position.x = x;
         p.position.y = y;
         center.poses.push_back(p);
         count3 = 1;
+        test =1;
        }
     if (c_flag ==1)
         { 
@@ -289,23 +290,24 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr & msg)
     //高速寻迹停止记圈代码***********************************************///////////////////////////////////////
     if (test ==1)
     {
-        if ( pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) >= 9)
+        if ( pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) >= 36)
       {
         slam_begin = 1;
         std::cout<<"建图开始2222"<<std::endl;
       }
-  if (slam_begin == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) <= 9)
+  if (slam_begin == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) <= 36)
       {
         slam_over =1;//建图完成，不再存入新的点
         no_save = 1;//此时不再存入新的点
+        stop_flag.data = 2;//z等于2时，就开始提速
+        std::cout<<"z= "<< stop_flag.data<<std::endl;
         std::cout<<"建图结束3333"<<std::endl;
       }
-  if (slam_over == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) >= 9)
+  if (slam_over == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) >= 36)
       {
         track_1 = 1;
-        stop_flag.data = 2;//z等于2时，就开始提速
       }
-  if (track_1 == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) <= 9)
+  if (track_1 == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) <= 36)
       {
         track_2 =1;
       }
@@ -313,11 +315,11 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr & msg)
       {
         track_last =1;
       }
-  if (track_last ==1 && pow((X - center.poses[1].position.x),2) + pow((Y - center.poses[1].position.y),2) <= 9)
+  if (track_last ==1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) <= 36)
       {
         for (uint8_t i = 0; i < msg->bounding_boxes.size(); i++)
          {
-           if ((msg->bounding_boxes[i].Class == "yellow") == 1 && msg->bounding_boxes[i].distancey <= 400)
+           if ((msg->bounding_boxes[i].Class == "yellow") == 1 && msg->bounding_boxes[i].distancey <= 300)
            {
             stop_flag.data = 1;//z 至1就是停止标志位
            }

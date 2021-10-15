@@ -17,6 +17,7 @@
 #include<geometry_msgs/PoseArray.h>
 #include <message_filters/subscriber.h>
 #include <message_filters/time_synchronizer.h>
+#include<std_msgs/UInt8.h>
 const float D2R = 3.1415926/180;
 const float dd = 0.22;//转换车身坐标
 class Position
@@ -36,8 +37,11 @@ uint8_t r_flag = 0;//定义的比较标志位，置1才执行比较
 uint8_t b_flag = 0;
 uint8_t c_flag = 0;
 uint8_t s_flag = 0;
+uint8_t y_flag = 0;
+uint8_t t_flag = 0;//黄色给中心点标志位
 std::vector<Position> red;//定义的ｖｅｃｔｏｒ数组类，来储存左边和右边的距离值，不同的值
 std::vector<Position> blue;
+std::vector<Position> yellow;
 double gr_x = 0.0;
 double gr_y = 0.0;//设置的一进循环就直接把值转化为绝对坐标系
 double gb_x = 0.0;
@@ -47,25 +51,39 @@ uint8_t count1 = 0;//第一帧标志位
 uint8_t count2 = 0;
 uint8_t count3 = 0;
 uint8_t count4 = 0;
+uint8_t count6 = 0;//yellow是6
+uint8_t count7 = 0;//黄色给中心点是7
 uint8_t bflag = 0;//设置的循环遍历的存储标志位
 uint8_t rflag = 0;
 uint8_t cflag = 0;
+uint8_t tflag =0;
+uint8_t slam_begin = 0;  //建图完成存入点标志位
+uint8_t slam_over = 0;
+uint8_t no_save = 0;
+uint8_t track_1 = 0;
+uint8_t track_2 =0;
+uint8_t test = 0;//存点标志位
+ uint8_t track_last =0;
 Position red_;//申明类的对象left_和right_
 Position blue_;
+Position yellow_;
 /* 比较函数对检测的锥桶点进行储存*/
 class p_and_s
 { 
    private:
     ros::NodeHandle nh;
     ros::Publisher Pub_point;
+    ros::Publisher Pub_stop;
     ros::Subscriber Sub_imu;
     ros::Subscriber Sub_BX; 
     geometry_msgs::PoseArray  center;
     geometry_msgs::Pose p;
+    std_msgs::UInt8 stop_flag;//加速停止标志位
   public:
   p_and_s()
   {
-   Pub_point = nh.advertise<geometry_msgs::PoseArray>("/point",50);//modify 50 suoyoude duiliechangdu yao yiyang 
+   Pub_point = nh.advertise<geometry_msgs::PoseArray>("/point",50);//modify 50 suoyoude duiliechangdu yao yiyang
+   Pub_stop = nh.advertise<std_msgs::UInt8>("/stop",50);//发布停止加速标志位话题 
    Sub_imu = nh.subscribe("/canalystii_ros/vehicle_Pose",50,&p_and_s::CallBack_GPS,this);
    Sub_BX = nh.subscribe("/darknet_ros/bounding_boxes",50,&p_and_s::CallBack,this);
   }
@@ -166,7 +184,8 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
             blue.push_back(blue_);
           }
       } 
-    }  
+    } 
+    
   } 
   ///////////// 下面开始就是存储和偏移的中心点///////////////////////////////////////
         float th = 0.0;
@@ -174,175 +193,175 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
         double c_y = 0.0;
         double c_x1 = 0.0;
         double c_y1 = 0.0;
-     if (blue.size() == 1 && X > 0)//这里开始就只有一个蓝色时，给两个点
-      {
-        if(c_flag == 0)
-        {
-        if(X != 0)
-        {   
-          p.position.x = X;
-          p.position.y = Y;
-          center.poses.push_back(p);
-        }
-        p.position.x = blue[0].x - 1.7*sin(theta*D2R);
-        p.position.y = blue[0].y  + 1.7*cos(theta*D2R) ;//9.27 改偏移1.7
-        center.poses.push_back(p);
-        count3 = 1;
-        }
-        if (c_flag ==1)//这里可能有bug，这里比较的点要是上一次不能够动的点
-        { 
-            c_x = blue[0].x - 1.7*sin(theta*D2R);
-            c_y = blue[0].y  + 1.7*cos(theta*D2R);
-          for (auto it = center.poses.begin();it!= center.poses.end();it++)
-          {
-            if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 2 )
-            {
-              cflag = 1;
-              break;
-            }
-          }
-          if(cflag == 0)
-          {
-            // p.position.x = c_x;
-            // p.position.y = c_y;
-            // center.poses.push_back(p);
-          }
-       }
-      }  ////            ******************  一个点存储结束******************/////////////////
-    if(blue.size() == 2 && X > 0 && center.poses.size() == 2)//这是当开始就只有一个蓝色桶时，后面的储存点的开始///
-    {
-      for (uint8_t j = blue.size()-2;j < blue.size()-1;++j)
-      {
-        th = atan((blue[j].y-blue[j+1].y)/(blue[j].x-blue[j+1].x));//从最后两个点来获取斜率 
-        if(th < 0)
-        {
-          if(blue[j+1].x > blue[j].x && blue[j+1].y < blue[j].y)// 四象限
-          {
-            c_x = blue[j+1].x - 1.7*sin(th);
-            c_y = blue[j+1].y + 1.7*cos(th);
-          }
-          if(blue[j+1].x < blue[j].x && blue[j+1].y > blue[j].y) // 二象限
-          {
-            c_x = blue[j+1].x + 1.7*sin(th);
-            c_y = blue[j+1].y - 1.7*cos(th);
-          }
-        }
-        if(th >= 0)
-        {
-          if(blue[j+1].x > blue[j].x && blue[j+1].y > blue[j].y)// 一象限
-          {
-            c_x = blue[j+1].x - 1.7*sin(th);
-            c_y = blue[j+1].y + 1.7*cos(th);
-          }
-          if(blue[j+1].x < blue[j].x && blue[j+1].y < blue[j].y)// 三象限
-          {
-            c_x = blue[j+1].x + 1.7*sin(th);
-            c_y = blue[j+1].y - 1.7*cos(th);
-          }
-        }
-        if(c_flag == 0)
-        {
-        p.position.x = c_x;
-        p.position.y = c_y;
-        center.poses.push_back(p);
-        count3 = 1;
-        }
-        if (c_flag ==1)
-        { 
-          for (auto it = center.poses.begin();it!= center.poses.end();it++)
-          {
-            if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 2 )
-            {
-              // (*it).position.x = ((*it).position.x + c_x)/2;
-              // (*it).position.y = ((*it).position.y + c_y)/2;
-              cflag = 1;
-              break;
-            }
-          }
-          if(cflag == 0)
-          {
-            p.position.x = c_x;//将最新的点，存入vector中
-            p.position.y = c_y;
-            center.poses.push_back(p);
-          }
-        } 
-      }
-    }   ////  结束 /////////////////////////////////////////////
+    //  if (blue.size() == 1 && X > 0)//这里开始就只有一个蓝色时，给两个点
+    //   {
+    //     if(c_flag == 0)
+    //     {
+    //     if(X != 0)
+    //     {   
+    //       p.position.x = X;
+    //       p.position.y = Y;
+    //       center.poses.push_back(p);
+    //     }
+    //     p.position.x = blue[0].x - 1.7*sin(theta*D2R);
+    //     p.position.y = blue[0].y  + 1.7*cos(theta*D2R) ;//9.27 改偏移1.7
+    //     center.poses.push_back(p);
+    //     count3 = 1;
+    //     }
+    //     if (c_flag ==1)//这里可能有bug，这里比较的点要是上一次不能够动的点
+    //     { 
+    //         c_x = blue[0].x - 1.7*sin(theta*D2R);
+    //         c_y = blue[0].y  + 1.7*cos(theta*D2R);
+    //       for (auto it = center.poses.begin();it!= center.poses.end();it++)
+    //       {
+    //         if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 2 )
+    //         {
+    //           cflag = 1;
+    //           break;
+    //         }
+    //       }
+    //       if(cflag == 0)
+    //       {
+    //         // p.position.x = c_x;
+    //         // p.position.y = c_y;
+    //         // center.poses.push_back(p);
+    //       }
+    //    }
+    //   }  ////            ******************  一个点存储结束******************/////////////////
+    // if(blue.size() == 2 && X > 0 && center.poses.size() == 2)//这是当开始就只有一个蓝色桶时，后面的储存点的开始///
+    // {
+    //   for (uint8_t j = blue.size()-2;j < blue.size()-1;++j)
+    //   {
+    //     th = atan((blue[j].y-blue[j+1].y)/(blue[j].x-blue[j+1].x));//从最后两个点来获取斜率 
+    //     if(th < 0)
+    //     {
+    //       if(blue[j+1].x > blue[j].x && blue[j+1].y < blue[j].y)// 四象限
+    //       {
+    //         c_x = blue[j+1].x - 1.7*sin(th);
+    //         c_y = blue[j+1].y + 1.7*cos(th);
+    //       }
+    //       if(blue[j+1].x < blue[j].x && blue[j+1].y > blue[j].y) // 二象限
+    //       {
+    //         c_x = blue[j+1].x + 1.7*sin(th);
+    //         c_y = blue[j+1].y - 1.7*cos(th);
+    //       }
+    //     }
+    //     if(th >= 0)
+    //     {
+    //       if(blue[j+1].x > blue[j].x && blue[j+1].y > blue[j].y)// 一象限
+    //       {
+    //         c_x = blue[j+1].x - 1.7*sin(th);
+    //         c_y = blue[j+1].y + 1.7*cos(th);
+    //       }
+    //       if(blue[j+1].x < blue[j].x && blue[j+1].y < blue[j].y)// 三象限
+    //       {
+    //         c_x = blue[j+1].x + 1.7*sin(th);
+    //         c_y = blue[j+1].y - 1.7*cos(th);
+    //       }
+    //     }
+    //     if(c_flag == 0)
+    //     {
+    //     p.position.x = c_x;
+    //     p.position.y = c_y;
+    //     center.poses.push_back(p);
+    //     count3 = 1;
+    //     }
+    //     if (c_flag ==1)
+    //     { 
+    //       for (auto it = center.poses.begin();it!= center.poses.end();it++)
+    //       {
+    //         if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 2 )
+    //         {
+    //           // (*it).position.x = ((*it).position.x + c_x)/2;
+    //           // (*it).position.y = ((*it).position.y + c_y)/2;
+    //           cflag = 1;
+    //           break;
+    //         }
+    //       }
+    //       if(cflag == 0)
+    //       {
+    //         p.position.x = c_x;//将最新的点，存入vector中
+    //         p.position.y = c_y;
+    //         center.poses.push_back(p);
+    //       }
+    //     } 
+    //   }
+    // }   ////  结束 /////////////////////////////////////////////
       //当第一帧进来的是两个点时 ///////////////////////这个和第一次进来一个点时 ，就只能运行一个
-   if(blue.size() == 2 && X > 0 && center.poses.size() ==0)//偏移算法
-    {
-      //改当一个点存了之后，在进两个点还是可以存
-      for (uint8_t j = blue.size()-2;j < blue.size()-1;++j)
-      {
-        th = atan((blue[j].y-blue[j+1].y)/(blue[j].x-blue[j+1].x));//利用最后两个点进行斜率的求解 
-        if(th < 0)
-        {
-          if(blue[j+1].x > blue[j].x && blue[j+1].y < blue[j].y)// 四象限
-          {
-            c_x = blue[j+1].x - 1.7*sin(th);
-            c_y = blue[j+1].y + 1.7*cos(th);
-            c_x1 = blue[j].x - 1.7*sin(th);
-            c_y1 = blue[j].y + 1.7*cos(th);
-          }
-          if(blue[j+1].x < blue[j].x && blue[j+1].y > blue[j].y) // 二象限
-          {
-            c_x = blue[j+1].x + 1.7*sin(th);
-            c_y = blue[j+1].y - 1.7*cos(th);
-            c_x1 = blue[j].x - 1.7*sin(th);
-            c_y1 = blue[j].y + 1.7*cos(th);
-          }
-        }
-        if(th >= 0)
-        {
-          if(blue[j+1].x > blue[j].x && blue[j+1].y > blue[j].y)// 一象限
-          {
-            c_x = blue[j+1].x - 1.7*sin(th);
-            c_y = blue[j+1].y + 1.7*cos(th);
-            c_x1 = blue[j].x - 1.7*sin(th);
-            c_y1 = blue[j].y + 1.7*cos(th);
-          }
-          if(blue[j+1].x < blue[j].x && blue[j+1].y < blue[j].y)// 三象限
-          {
-            c_x = blue[j+1].x + 1.7*sin(th);
-            c_y = blue[j+1].y - 1.7*cos(th);
-            c_x1 = blue[j].x - 1.7*sin(th);
-            c_y1 = blue[j].y + 1.7*cos(th);
-          }
-        }
-        if(c_flag == 0)
-        {
-        p.position.x = X;
-        p.position.y = Y;
-        center.poses.push_back(p);
-        p.position.x = c_x1;
-        p.position.y = c_y1;
-        center.poses.push_back(p);
-        p.position.x = c_x;
-        p.position.y = c_y;
-        center.poses.push_back(p);
-        count3 = 1;
-        }
-        if (c_flag ==1)
-        { 
-          for (auto it = center.poses.begin();it!= center.poses.end();it++)
-          {
-            if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 2 )
-            {
-              cflag = 1;
-              break;
-            }
-          }
-          if(cflag == 0)
-          {
-            // p.position.x = c_x;//将最新的点，存入vector中
-            // p.position.y = c_y;
-            // center.poses.push_back(p);
-          }
-        } 
-      }
-    }  
+  //  if(blue.size() == 2 && X > 0 && center.poses.size() ==0)//偏移算法
+  //   {
+  //     //改当一个点存了之后，在进两个点还是可以存
+  //     for (uint8_t j = blue.size()-2;j < blue.size()-1;++j)
+  //     {
+  //       th = atan((blue[j].y-blue[j+1].y)/(blue[j].x-blue[j+1].x));//利用最后两个点进行斜率的求解 
+  //       if(th < 0)
+  //       {
+  //         if(blue[j+1].x > blue[j].x && blue[j+1].y < blue[j].y)// 四象限
+  //         {
+  //           c_x = blue[j+1].x - 1.7*sin(th);
+  //           c_y = blue[j+1].y + 1.7*cos(th);
+  //           c_x1 = blue[j].x - 1.7*sin(th);
+  //           c_y1 = blue[j].y + 1.7*cos(th);
+  //         }
+  //         if(blue[j+1].x < blue[j].x && blue[j+1].y > blue[j].y) // 二象限
+  //         {
+  //           c_x = blue[j+1].x + 1.7*sin(th);
+  //           c_y = blue[j+1].y - 1.7*cos(th);
+  //           c_x1 = blue[j].x - 1.7*sin(th);
+  //           c_y1 = blue[j].y + 1.7*cos(th);
+  //         }
+  //       }
+  //       if(th >= 0)
+  //       {
+  //         if(blue[j+1].x > blue[j].x && blue[j+1].y > blue[j].y)// 一象限
+  //         {
+  //           c_x = blue[j+1].x - 1.7*sin(th);
+  //           c_y = blue[j+1].y + 1.7*cos(th);
+  //           c_x1 = blue[j].x - 1.7*sin(th);
+  //           c_y1 = blue[j].y + 1.7*cos(th);
+  //         }
+  //         if(blue[j+1].x < blue[j].x && blue[j+1].y < blue[j].y)// 三象限
+  //         {
+  //           c_x = blue[j+1].x + 1.7*sin(th);
+  //           c_y = blue[j+1].y - 1.7*cos(th);
+  //           c_x1 = blue[j].x - 1.7*sin(th);
+  //           c_y1 = blue[j].y + 1.7*cos(th);
+  //         }
+  //       }
+  //       if(c_flag == 0)
+  //       {
+  //       p.position.x = X;
+  //       p.position.y = Y;
+  //       center.poses.push_back(p);
+  //       p.position.x = c_x1;
+  //       p.position.y = c_y1;
+  //       center.poses.push_back(p);
+  //       p.position.x = c_x;
+  //       p.position.y = c_y;
+  //       center.poses.push_back(p);
+  //       count3 = 1;
+  //       }
+  //       if (c_flag ==1)
+  //       { 
+  //         for (auto it = center.poses.begin();it!= center.poses.end();it++)
+  //         {
+  //           if (pow(((*it).position.x - c_x),2) + pow(((*it).position.y - c_y),2) < 2 )
+  //           {
+  //             cflag = 1;
+  //             break;
+  //           }
+  //         }
+  //         if(cflag == 0)
+  //         {
+  //           // p.position.x = c_x;//将最新的点，存入vector中
+  //           // p.position.y = c_y;
+  //           // center.poses.push_back(p);
+  //         }
+  //       } 
+  //     }
+  //   }  
     ///接到上面，第一次就进来两个点的情况
-    if(blue.size() > 2 && X > 0 )//偏移算法
+    if(blue.size() >= 2 && X > 0 )//偏移算法
     {
       for (uint8_t j = blue.size()-2;j < blue.size()-1;++j)
       {
@@ -351,34 +370,38 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
         {
           if(blue[j+1].x > blue[j].x && blue[j+1].y < blue[j].y)// 四象限
           {
-            c_x = blue[j+1].x - 1.7*sin(th);
-            c_y = blue[j+1].y + 1.7*cos(th);
+            c_x = blue[j+1].x - 1.5*sin(th);
+            c_y = blue[j+1].y + 1.5*cos(th);
           }
           if(blue[j+1].x < blue[j].x && blue[j+1].y > blue[j].y) // 二象限
           {
-            c_x = blue[j+1].x + 1.7*sin(th);
-            c_y = blue[j+1].y - 1.7*cos(th);
+            c_x = blue[j+1].x + 1.5*sin(th);
+            c_y = blue[j+1].y - 1.5*cos(th);
           }
         }
         if(th >= 0)
         {
           if(blue[j+1].x > blue[j].x && blue[j+1].y > blue[j].y)// 一象限
           {
-            c_x = blue[j+1].x - 1.7*sin(th);
-            c_y = blue[j+1].y + 1.7*cos(th);
+            c_x = blue[j+1].x - 1.5*sin(th);
+            c_y = blue[j+1].y + 1.5*cos(th);
           }
           if(blue[j+1].x < blue[j].x && blue[j+1].y < blue[j].y)// 三象限
           {
-            c_x = blue[j+1].x + 1.7*sin(th);
-            c_y = blue[j+1].y - 1.7*cos(th);
+            c_x = blue[j+1].x + 1.5*sin(th);
+            c_y = blue[j+1].y - 1.5*cos(th);
           }
         }
         if(c_flag == 0)
         {
+        p.position.x = X;
+        p.position.y = Y;
+        center.poses.push_back(p);
         p.position.x = c_x;
         p.position.y = c_y;
         center.poses.push_back(p);
         count3 = 1;
+        test =1 ;
         }
         if (c_flag ==1)
         { 
@@ -401,6 +424,44 @@ void CallBack(const darknet_ros_msgs:: BoundingBoxes::ConstPtr &msg)
         } 
       }
     }  //    ***************************************///////////////结束  ////////////////
+        if (test ==1)
+    {
+        if ( pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) >= 9)
+      {
+        slam_begin = 1;
+        std::cout<<"建图开始2222"<<std::endl;
+      }
+  if (slam_begin == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) <= 36)
+      {
+        slam_over =1;//建图完成，不再存入新的点
+        no_save = 1;//此时不再存入新的点
+        stop_flag.data = 2;//z等于2时，就开始提速
+        std::cout<<"z= "<< stop_flag.data<<std::endl;
+        std::cout<<"建图结束3333"<<std::endl;
+      }
+  if (slam_over == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) >= 9)
+      {
+        track_1 = 1;
+      }
+  if (track_1 == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) <= 36)
+      {
+        track_2 =1;
+      }
+  if (track_2 == 1 && pow((X - center.poses[0].position.x),2) + pow((Y - center.poses[0].position.y),2) >= 9)
+      {
+        track_last =1;
+      }
+  if (track_last ==1 && pow((X - center.poses[1].position.x),2) + pow((Y - center.poses[1].position.y),2) <= 20)
+      {
+        for (uint8_t i = 0; i < msg->bounding_boxes.size(); i++)
+         {
+           if ((msg->bounding_boxes[i].Class == "yellow") == 1 && msg->bounding_boxes[i].distancey <= 300)
+           {
+            stop_flag.data = 1;//z 至1就是停止标志位
+           }
+         }
+      }
+    }
     //经过上面两次判断，直接就能把偏移的中心点，存入center中
     // for (std::vector<Position>::iterator it = red.begin();it!= red.end();it++)
     //   {
